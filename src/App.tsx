@@ -1,6 +1,5 @@
 import  { useEffect } from "react";
 import "./App.css"; // Import Tailwind CSS
-
 import AOS from "aos"; // Import AOS for animations
 import "aos/dist/aos.css"; // Import AOS CSS
 import { Navbar } from "./components/navbar";
