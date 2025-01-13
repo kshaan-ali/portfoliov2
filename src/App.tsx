@@ -1,7 +1,8 @@
-// PortfolioWebsite.js
 import  { useEffect, useState } from "react";
 import "./App.css"; // Import Tailwind CSS
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import AOS from "aos"; // Import AOS for animations
+import "aos/dist/aos.css"; // Import AOS CSS
 
 const data = {
   projects: [
@@ -126,11 +127,15 @@ const Navbar = () => {
 };
 
 const Hero = () => (
-  <div className="bg-gradient-to-r min-h-96 flex flex-col items-center justify-center from-gray-800 to-gray-900 text-white ">
-    <h1 className="text-4xl md:text-6xl font-extrabold">
+  <div className="bg-gradient-to-r min-h-96 flex flex-col items-center justify-center from-gray-800 to-gray-900 text-white">
+    <h1 className="text-4xl md:text-6xl font-extrabold" data-aos="fade-up">
       Hi, I'm Shaan Ali Khan
     </h1>
-    <p className="mt-10 text-xl w-3/5">
+    <p
+      className="mt-10 text-xl w-3/5"
+      data-aos="fade-up"
+      data-aos-delay="300"
+    >
       I specialize in building intuitive web applications and decentralized
       solutions using technologies like React, JavaScript, Node.js, Solidity,
       and blockchain. Explore my projects to see how I combine innovation with
@@ -141,12 +146,16 @@ const Hero = () => (
 
 const Projects = () => (
   <div id="projects" className="bg-gray-900 text-white py-20 px-6">
-    <h2 className="text-5xl font-bold mb-16">Projects</h2>
+    <h2 className="text-5xl font-bold mb-16" data-aos="fade-up">
+      Projects
+    </h2>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {data.projects.map((project, index) => (
         <div
           key={index}
-          className={`bg-gradient-to-br from-indigo-500 to-purple-500 p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform hover:shadow-xl flex flex-col justify-between`}
+          className="bg-gradient-to-br from-indigo-500 to-purple-500 p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform hover:shadow-xl flex flex-col justify-between"
+          data-aos="fade-up"
+          data-aos-delay={index * 300}
         >
           <div>
             <h3 className="text-3xl font-bold text-white">{project.title}</h3>
@@ -176,12 +185,16 @@ const Projects = () => (
 
 const Skills = () => (
   <div id="skills" className="bg-gray-800 text-white py-20 px-6">
-    <h2 className="text-3xl font-bold mb-8">Skills</h2>
+    <h2 className="text-3xl font-bold mb-8" data-aos="fade-up">
+      Skills
+    </h2>
     <div className="flex flex-wrap gap-4">
       {data.skills.map((skill, index) => (
         <span
           key={index}
-          className={`px-7 py-3 text-xl  rounded shadow hover:shadow-md transform hover:scale-105 transition-transform  bg-gradient-to-r from-blue-500 to-blue-700 select-none`}
+          className="px-7 py-3 text-xl rounded shadow hover:shadow-md transform hover:scale-105 transition-transform bg-gradient-to-r from-blue-500 to-blue-700 select-none"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
         >
           {skill}
         </span>
@@ -192,15 +205,19 @@ const Skills = () => (
 
 const Experience = () => (
   <div id="experience" className="bg-gray-900 text-white py-20 px-6">
-    <h2 className="text-3xl font-bold mb-8">Experience</h2>
+    <h2 className="text-3xl font-bold mb-8" data-aos="fade-up">
+      Experience
+    </h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {data.experiences.map((exp, index) => (
         <div
           key={index}
           className="bg-gradient-to-tr from-gray-800 to-gray-900 p-6 rounded-md shadow-md hover:shadow-lg transform hover:scale-105 transition-transform select-none"
+          data-aos="fade-up"
+          data-aos-delay={index * 300}
         >
           <h3 className="text-xl font-bold">{exp.title}</h3>
-          <p className="my-2  font-bold">{exp.company}</p>
+          <p className="my-2 font-bold">{exp.company}</p>
           <p className="my-2">Duration: {exp.duration}</p>
           <p>{exp.description}</p>
         </div>
@@ -214,17 +231,18 @@ const Contact = () => (
     id="contact"
     className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 text-white py-20 px-6"
   >
-    <h2 className="text-3xl font-bold mb-8">Contact</h2>
+    <h2 className="text-3xl font-bold mb-8" data-aos="fade-up">
+      Contact
+    </h2>
     <div className="flex flex-col justify-center items-center">
-
-    <p className="text-lg mb-4">Feel free to reach out to me via email!</p>
-    <a
-      href="https://mail.google.com/mail/?view=cm&fs=1&to=kshaaneali@gmail.com&su=Inquiry&body=Hello%20Shaan,%0A%0A"
-      className="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-3 rounded-md text-white font-bold hover:from-indigo-400 hover:to-purple-400"
+      <p className="text-lg mb-4">Feel free to reach out to me via email!</p>
+      <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=kshaaneali@gmail.com&su=Inquiry&body=Hello%20Shaan,%0A%0A"
+        className="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-3 rounded-md text-white font-bold hover:from-indigo-400 hover:to-purple-400"
       >
-      Send Email
-    </a>
-      </div>
+        Send Email
+      </a>
+    </div>
   </div>
 );
 
@@ -260,16 +278,22 @@ const Footer = () => (
   </footer>
 );
 
-const App = () => (
-  <div className="font-sans bg-gray-900">
-    <Navbar />
-    <Hero />
-    <Projects />
-    <Skills />
-    <Experience />
-    <Contact />
-    <Footer />
-  </div>
-);
+const App = () => {
+  useEffect(() => {
+    AOS.init(); // Initialize AOS
+  }, []);
+
+  return (
+    <div className="font-sans bg-gray-900">
+      <Navbar />
+      <Hero />
+      <Projects />
+      <Skills />
+      <Experience />
+      <Contact />
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
