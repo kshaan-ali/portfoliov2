@@ -1,5 +1,5 @@
 // PortfolioWebsite.js
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import "./App.css"; // Import Tailwind CSS
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
